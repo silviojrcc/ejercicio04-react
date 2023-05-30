@@ -28,6 +28,11 @@ const FormularioTarea = () => {
         setTareas(nuevaListaTareas);
     }
 
+    const actualizarEstadoTarea = (tareaACompletar) => {
+        const tareaModificada = tareas.find((tarea) => tarea.texto === tareaACompletar.texto);
+        tareaModificada.estaCompletada = tareaACompletar.estaCompletada;
+    }
+
     return (
         <div className="">
             <Form onSubmit={handleSubmit} className="d-flex align-content-center justify-content-center">
@@ -39,7 +44,7 @@ const FormularioTarea = () => {
                 </Button>
             </Form>
             <hr className="text-light mt-4" />
-            <ListaTareas tareas={tareas} borrarTarea={borrarTarea}></ListaTareas>
+            <ListaTareas tareas={tareas} borrarTarea={borrarTarea} actualizarEstadoTarea={actualizarEstadoTarea}></ListaTareas>
         </div>
     );
 };

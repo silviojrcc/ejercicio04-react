@@ -2,12 +2,17 @@ import React, { useState } from 'react';
 import { ListGroup, Button } from 'react-bootstrap';
 
 
-const Tarea = ({tarea, borrarTarea}) => {
+const Tarea = ({tarea, borrarTarea, actualizarEstadoTarea}) => {
 
     const [completada, setCompletada] = useState(false);
 
     const handleCheckboxChange = () => {
         setCompletada(!completada);
+        const tareaModificada = {
+            ...tarea,
+            estaCompletada: completada
+        }
+        actualizarEstadoTarea(tareaModificada);
     };
 
     return (
