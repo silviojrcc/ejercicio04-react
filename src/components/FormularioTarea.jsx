@@ -1,12 +1,16 @@
 import { Form, Button } from "react-bootstrap";
 import ListaTareas from "./ListaTareas";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 
 const FormularioTarea = () => {
 
     const [textoTarea, setTextoTarea] = useState("");
-    const [tareas, setTareas] = useState([]);
+    const [tareas, setTareas] = useState(JSON.parse(localStorage.getItem("tareas")) || []);
+
+    useEffect(() => {
+        localStorage.setItem("tareas", JSON.stringify(tareas))
+    },[tareas])
 
     function handleChange(e) {
         setTextoTarea(e.target.value);
@@ -29,8 +33,13 @@ const FormularioTarea = () => {
     }
 
     const actualizarEstadoTarea = (tareaACompletar) => {
-        const tareaModificada = tareas.find((tarea) => tarea.texto === tareaACompletar.texto);
+        const tareasActualizadas = [...tareas];
+
+        const tareaModificada = tareasActualizadas.find((tarea) => tarea.texto === tareaACompletar.texto);
         tareaModificada.estaCompletada = tareaACompletar.estaCompletada;
+
+        setTareas(tareasActualizadas);
+        console.log(tareas);
     }
 
     return (

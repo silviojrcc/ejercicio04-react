@@ -10,7 +10,7 @@ const Tarea = ({tarea, borrarTarea, actualizarEstadoTarea}) => {
         setCompletada(!completada);
         const tareaModificada = {
             ...tarea,
-            estaCompletada: completada
+            estaCompletada: !completada
         }
         actualizarEstadoTarea(tareaModificada);
     };
@@ -18,11 +18,11 @@ const Tarea = ({tarea, borrarTarea, actualizarEstadoTarea}) => {
     return (
         <div>
             <ListGroup.Item className="d-flex justify-content-between text-light bg-dark">
-                <p className={` ${completada ? "completada" : ""}`}>{tarea.texto}</p>
+                <p className={` ${tarea.estaCompletada ? "completada" : ""}`}>{tarea.texto}</p>
                 <div className='d-flex justify-content-center align-items-center'>
                     <div className='mx-3'>
                         <label className='mx-2' for="completada">Completada?</label>
-                        <input name="completada" id="completada" type='checkbox' onChange={handleCheckboxChange} checked={completada} value={tarea.estaCompletada} />
+                        <input name="completada" id="completada" type='checkbox' onChange={handleCheckboxChange} checked={tarea.estaCompletada}/>
                     </div>
                 <Button onClick={() => {borrarTarea(tarea)}} variant="danger">Borrar</Button>
                 </div>
