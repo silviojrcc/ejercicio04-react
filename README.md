@@ -2,7 +2,7 @@
 
 Este es el ejercicio número 4 del primer trabajo práctico de react de la escuela de programación [Rolling Code](https://rollingcodeschool.com/). Este ejercicio consta de un formulario que nos permite agregar tareas, que se mostrarán en forma de cards. Al enviar el formulario las tareas se guardarán y luego se las traerán del localstorage.
 
-Podes ver la página haciendo click [aquí](https://ejercicio04-react-veterinaria.tareas.app/)
+Podes ver la página haciendo click [aquí](https://ejercicio04-react-tareas.netlify.app/)
 
 ## Tecnologías utilizadas
 - React: El framework de JavaScript utilizado para el desarrollo de la interfaz de usuario.
